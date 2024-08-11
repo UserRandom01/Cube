@@ -1,0 +1,272 @@
+:root {
+    --ffpoppins: "Poppins", sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(#111, black);
+    display: grid;
+    place-content: center;
+    font-family: var(--ffpoppins);
+}
+
+.container {
+    width: 80vw;
+    height: 90vh;
+    display: grid;
+    place-content: center;
+    perspective: 1000px;
+}
+
+.cube {
+    position: relative;
+    height: 350px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: 1s ease;
+    animation: Rotater 6s linear infinite alternate;
+}
+
+@keyframes Rotater {
+    0% {
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+
+    25% {
+        transform: rotateX(-45deg) rotateY(-45deg);
+    }
+
+    50% {
+        transform: rotateX(45deg) rotateY(45deg);
+    }
+
+    75% {
+        transform: rotateX(-45deg) rotateY(45deg);
+    }
+
+    100% {
+        transform: rotateX(45deg) rotateY(-45deg);
+    }
+}
+
+.side {
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    font-size: 2em;
+    text-transform: capitalize;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+
+}
+
+
+
+
+.colour {
+    height: 33%;
+    width: 33%;
+    border: 1px solid;
+    border-radius: 12px;
+    transition: all .6s ease;
+}
+
+.red {
+    background: red;
+}
+
+.white {
+    background: white;
+}
+
+.orange {
+    background: orange;
+}
+
+.green {
+    background: green;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.blue {
+    background: blue;
+}
+
+#left {
+    left: -175px;
+    transform: rotateY(-90deg);
+    transition: .6s ease;
+}
+
+#right {
+    right: -175px;
+    transform: rotateY(90deg);
+    transition: .6s ease;
+}
+
+#top {
+    top: -175px;
+    transform: rotateX(90deg);
+    transition: .6s ease;
+}
+
+#bottom {
+    bottom: -175px;
+    transform: rotateX(-90deg);
+    transition: .6s ease;
+}
+
+#front {
+    transform: translateZ(175px);
+    transition: .6s ease;
+}
+
+#back {
+    transform: translateZ(-175px) rotateY(-180deg);
+    transition: .6s ease;
+}
+
+
+input {
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    bottom: 24px;
+    /* left: calc(50% - 60px); */
+    right: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    color: white;
+    font-family: var(--ffpoppins);
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input:focus~.cube #front {
+    transform: translateZ(275px);
+}
+
+input:focus~.cube #back {
+    transform: translateZ(-275px) rotateY(-180deg);
+}
+
+input:focus~.cube #left {
+    left: -275px;
+}
+
+input:focus~.cube #right {
+    right: -275px;
+}
+
+input:focus~.cube #top {
+    top: -275px;
+}
+
+input:focus~.cube #bottom {
+    bottom: -275px;
+}
+
+input:focus~.cube .side {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+input:focus~.cube .colour {
+    opacity: .7;
+}
+
+
+
+
+@media screen and (max-width:600px) {
+    .cube {
+        width: 200px;
+        height: 200px;
+    }
+
+    .side {
+        width: 200px;
+        height: 200px;
+    }
+
+    #left {
+        left: -100px;
+        transform: rotateY(-90deg);
+        transition: .6s ease;
+    }
+
+    #right {
+        right: -100px;
+        transform: rotateY(90deg);
+        transition: .6s ease;
+    }
+
+    #top {
+        top: -100px;
+        transform: rotateX(90deg);
+        transition: .6s ease;
+    }
+
+    #bottom {
+        bottom: -100px;
+        transform: rotateX(-90deg);
+        transition: .6s ease;
+    }
+
+    #front {
+        transform: translateZ(100px);
+        transition: .6s ease;
+    }
+
+    #back {
+        transform: translateZ(-100px) rotateY(-180deg);
+        transition: .6s ease;
+    }
+
+    input:focus~.cube #front {
+        transform: translateZ(150px);
+    }
+
+    input:focus~.cube #back {
+        transform: translateZ(-150px) rotateY(-180deg);
+    }
+
+    input:focus~.cube #left {
+        left: -150px;
+    }
+
+    input:focus~.cube #right {
+        right: -150px;
+    }
+
+    input:focus~.cube #top {
+        top: -150px;
+    }
+
+    input:focus~.cube #bottom {
+        bottom: -150px;
+    }
+}
